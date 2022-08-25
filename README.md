@@ -1,3 +1,13 @@
+# MODIFICATIONS
+
+Allow support for queuing jobs `pickle.dumps` in Python3 and `pickle.loads` in iPython2.7.
+
+RQ defaults `pickle` protocol to HIGHEST available for the Python version, however, we want to match this to the protocol used in Python2.7 which is protocol=2.
+
+Later versions of RQ support passing in a custom serializer, however, those versions introduce other breaking changes that stop Python3 queued jobs to be processed by Python2.7 workers.
+ 
+--------------------
+
 RQ (_Redis Queue_) is a simple Python library for queueing jobs and processing
 them in the background with workers.  It is backed by Redis and it is designed
 to have a low barrier to entry.  It should be integrated in your web stack
